@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday!</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="surprise.js" defer></script>
+    <script src="gallery.js" defer></script>
+    <script src="music.js" defer></script>  <!-- 🎵 Persistent Music Script -->
+    <style>
+        /* 🌄 Background Image */
+        body {
+            margin: 0;
+            padding: 0;
+            background: url('images/Sudhu.jpg') no-repeat center center/cover; 
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+            color: white; /* Text color for readability */
+        }
+
+        /* ✨ Transparent Sections */
+        main, header, footer, #gallery, #slideshow-container, #surprise-section {
+            background: transparent;  /* No black background */
+            padding: 20px;
+        }
+
+        header h1, footer p {
+            text-align: center;
+        }
+
+        nav {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        nav a {
+            color: #FFD700; /* Gold links */
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 18px;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #FF6347; /* Tomato color on hover */
+        }
+
+        section {
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background: #45a049;
+        }
+
+        footer {
+            text-align: center;
+            color: white;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            padding: 10px;
+            background: transparent;  /* Removed black footer background */
+        }
+
+        @media (max-width: 768px) {
+            nav a {
+                font-size: 14px;
+            }
+
+            button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- 🎉 Header Section -->
+<header>
+    <h1>🎉 Happy Birthday! 🎂</h1>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="memory-game.html">Memory Game</a>
+    </nav>
+</header>
+
+<!-- 🎈 Main Content -->
+<main>
+    <!-- 🎁 Surprise Section -->
+    <section id="surprise-section">
+        <h2>🎉 Click Below for a Surprise!</h2>
+        <button id="surprise-button" onclick="window.location.href='memory-game.html'">🎁 Click for Surprise</button>  
+    </section>
+
+    <!-- 📸 Photo Gallery Section -->
+    <section id="gallery">
+        <h2>📸 Photo Gallery</h2>
+        <div id="slideshow-container"></div>
+    </section>
+
+    <!-- 🎵 Pause/Play Music Button -->
+    <section style="text-align: center; margin: 20px 0;">
+        <button onclick="toggleMusic()">🎵 Pause/Play Music</button>
+    </section>
+</main>
+
+<!-- 🎵 Background Music (Hidden) -->
+<audio id="bg-music" autoplay loop>
+    <source src="assets/happy-birthday.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+
+<!-- ❤️ Footer -->
+<footer>
+    <p>❤️ Love you, Sudhu! - Tejakka ❤️</p>
+</footer>
+
+</body>
+</html>

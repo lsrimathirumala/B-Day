@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory Game</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="memory-game.js" defer></script>
+
+    <style>
+        /* 🌄 Background Image */
+        body {
+            margin: 0;
+            padding: 0;
+            background: url('images/Sudhu.jpg') no-repeat center center/cover; 
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+            color: white; /* Text color for readability */
+        }
+
+        /* ✨ Transparent Sections */
+        main, header, footer {
+            background: transparent;
+            padding: 20px;
+        }
+
+        header h1, footer p {
+            text-align: center;
+        }
+
+        nav {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        nav a {
+            color: #FFD700; /* Gold links */
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 18px;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #FF6347; /* Tomato color on hover */
+        }
+
+        .game-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.7); /* Semi-transparent black background */
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .game-container:hover {
+            transform: scale(1.03);
+        }
+
+        #game-image {
+            display: none; 
+            max-width: 100%;
+            height: auto;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        #game-image.show {
+            display: block;
+            opacity: 1;
+        }
+
+        .input-section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        input {
+            padding: 10px;
+            font-size: 16px;
+            width: 150px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background: #45a049;
+        }
+
+        #feedback {
+            font-size: 18px;
+            margin: 15px 0;
+        }
+
+        footer {
+            text-align: center;
+            color: white;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            padding: 10px;
+            background: transparent; /* Transparent footer */
+        }
+
+        .music-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 20px 0;
+        }
+
+        .music-container button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .music-container button:hover {
+            background: #0056b3;
+        }
+
+        @media (max-width: 600px) {
+            .input-section {
+                flex-direction: column;
+            }
+            input, button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- 🎉 Header Section -->
+<header>
+    <h1>🧠 Guess the Year Game 🎉</h1>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="memory-game.html">Memory Game</a>
+    </nav>
+</header>
+
+<!-- 🧠 Memory Game Container -->
+<main>
+    <div class="game-container">
+        <h2>Can you guess the year?</h2>
+        
+        <img id="game-image" src="" alt="Game Image">  
+
+        <div class="input-section">
+            <label for="guess">Guess the Year:</label>
+            <input type="text" id="guess" placeholder="Enter year..." onkeydown="handleEnter(event)">
+            <button id="check-btn">Check</button>  
+            <button id="next-btn">Next</button>    
+        </div>
+
+        <p id="feedback"></p>
+        <p id="score">Score: 0</p>
+    </div>
+
+    <!-- 🎵 Music Controls -->
+    <div class="music-container">
+        <button onclick="toggleMusic()">🎵 Pause/Play Music</button>
+    </div>
+
+    <!-- 🎵 Background Music -->
+    <audio id="bg-music" src="./music/hbd.mp3" autoplay loop muted></audio>
+
+    <!-- 🎵 Persistent Music with iframe -->
+    <iframe src="music.html" style="display: none;" id="music-frame"></iframe>
+</main>
+
+<!-- ❤️ Footer -->
+<footer>
+    <p>❤️ Love you, Sudhu! - Tejakka ❤️</p>
+</footer>
+
+<script>
+    // 🎵 Handle autoplay restrictions
+    const bgMusic = document.getElementById("bg-music");
+
+    window.addEventListener("load", () => {
+        setTimeout(() => {
+            bgMusic.muted = false;  // Unmute the music
+            bgMusic.play().catch(err => console.log("Autoplay blocked:", err));
+        }, 1000);  // Delay to bypass autoplay restrictions
+    });
+
+    // ✅ Toggle music button function
+    function toggleMusic() {
+        if (bgMusic.paused) {
+            bgMusic.play();
+        } else {
+            bgMusic.pause();
+        }
+    }
+</script>
+
+</body>
+</html>

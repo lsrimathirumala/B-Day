@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Player</title>
+</head>
+<body>
+    <audio id="bg-music" autoplay loop>
+        <source src="assets\happy-birthday.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    
+    <button id="pause-btn">Pause Music</button>
+
+    <script>
+        // ✅ Ensure audio starts playing on first interaction
+        window.addEventListener('DOMContentLoaded', () => {
+            const audio = document.getElementById('bg-music');
+            audio.volume = 0.5;  // Adjust volume if needed
+            audio.play().catch(() => console.log('Autoplay prevented'));
+        });
+    </script>
+</body>
+</html>
